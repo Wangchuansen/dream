@@ -1,0 +1,146 @@
+version: "3.5"
+
+services:
+  dream-gateway:
+    # 指定容器名称
+    container_name: dream-gateway
+    # 重启机制
+    restart: always
+    image: java:8
+    volumes:
+      # 本地jar包路径
+      - ./dream-gateway.jar:/dream-gateway.jar
+      # 挂载日志
+      - ./logs/dream-gateway:/logs
+      # 指定容器时间为宿主机时间
+      - /etc/localtime:/etc/localtime
+    # 访问端口
+    ports:
+      - 8000:8000
+    environment:
+      # 指定时区
+      - TZ="Asia/Shanghai"
+    #启动容器后执行的命令
+    entrypoint: nohup java -server -Xms400m -Xmx400m -Dfile.encoding=utf-8 -Duser.timezone=GMT+08 -jar /dream-gateway.jar >> /logs/dream-gateway.log 2>&1 &
+      tail -f /logs/dream-gateway.log
+
+  dream-auth:
+    # 指定容器名称
+    container_name: dream-auth
+    # 重启机制
+    restart: always
+    image: java:8
+    volumes:
+      # 本地jar包路径
+      - ./dream-auth.jar:/dream-auth.jar
+      # 挂载日志
+      - ./logs/dream-auth:/logs
+      # 指定容器时间为宿主机时间
+      - /etc/localtime:/etc/localtime
+    # 访问端口
+    ports:
+      - 9105:9105
+    environment:
+      # 指定时区
+      - TZ="Asia/Shanghai"
+    #启动容器后执行的命令
+    entrypoint: nohup java -server -Xms400m -Xmx400m -Dfile.encoding=utf-8 -Duser.timezone=GMT+08 -jar /dream-auth.jar >> /logs/dream-auth.log 2>&1 &
+      tail -f /logs/dream-auth.log
+
+  dream-core:
+    # 指定容器名称
+    container_name: dream-core
+    # 重启机制
+    restart: always
+    image: java:8
+    volumes:
+      # 本地jar包路径
+      - ./dream-core.jar:/dream-core.jar
+      # 挂载日志
+      - ./logs/dream-core:/logs
+      # 指定容器时间为宿主机时间
+      - /etc/localtime:/etc/localtime
+      # https 文件服务连接密钥
+      - ./miniokey.cer:/miniokey.cer
+    # 访问端口
+    ports:
+      - 9108:9108
+    environment:
+      # 指定时区
+      - TZ="Asia/Shanghai"
+    #启动容器后执行的命令
+    entrypoint:
+      # RUN sh -c '/bin/echo -e "y" | keytool -import -trustcacerts -alias miniokey -file /miniokey.cer -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit'
+      # sh -c '/bin/echo -e "y" | keytool -import -trustcacerts -alias miniokey -file /miniokey.cer -keystore /usr/lib/jvm/java-8-openjdk-amd64/jre/lib/security/cacerts -storepass changeit'
+      nohup java -server -Xms400m -Xmx400m -Dfile.encoding=utf-8 -Duser.timezone=GMT+08 -jar /dream-core.jar >> /logs/dream-core.log 2>&1 &
+      tail -f /logs/dream-core.log
+
+  dream-miniprogram:
+    # 指定容器名称
+    container_name: dream-miniprogram
+    # 重启机制
+    restart: always
+    image: java:8
+    volumes:
+      # 本地jar包路径
+      - ./dream-miniprogram.jar:/dream-miniprogram.jar
+      # 挂载日志
+      - ./logs/dream-miniprogram:/logs
+      # 指定容器时间为宿主机时间
+      - /etc/localtime:/etc/localtime
+    # 访问端口
+    ports:
+      - 9106:9106
+    environment:
+      # 指定时区
+      - TZ="Asia/Shanghai"
+    #启动容器后执行的命令
+#    entrypoint: java -jar -Dfile.encoding=utf-8 -Xmx400m -Duser.timezone=GMT+08 /dream-miniprogram.jar >> /logs/dream-miniprogram.log 2>&1 &
+    entrypoint: nohup java -server -Xms400m -Xmx400m -Dfile.encoding=utf-8 -Duser.timezone=GMT+08 -jar /dream-miniprogram.jar >> /logs/dream-miniprogram.log 2>&1 &
+                tail -f /logs/dream-miniprogram.log
+
+  dream-activiti:
+    # 指定容器名称
+    container_name: dream-activiti
+    # 重启机制
+    restart: always
+    image: java:8
+    volumes:
+      # 本地jar包路径
+      - ./dream-activiti.jar:/dream-activiti.jar
+      # 挂载日志
+      - ./logs/dream-activiti:/logs
+      # 指定容器时间为宿主机时间
+      - /etc/localtime:/etc/localtime
+    # 访问端口
+    ports:
+      - 9109:9109
+    environment:
+      # 指定时区
+      - TZ="Asia/Shanghai"
+    #启动容器后执行的命令
+    entrypoint: nohup java -server -Xms400m -Xmx400m -Dfile.encoding=utf-8 -Duser.timezone=GMT+08 -jar /dream-activiti.jar >> /logs/dream-activiti.log 2>&1 &
+      tail -f /logs/dream-activiti.log
+
+  dream-backmanage:
+    # 指定容器名称
+    container_name: dream-backmanage
+    # 重启机制
+    restart: always
+    image: java:8
+    volumes:
+      # 本地jar包路径
+      - ./dream-backmanage.jar:/dream-backmanage.jar
+      # 挂载日志
+      - ./logs/dream-backmanage:/logs
+      # 指定容器时间为宿主机时间
+      - /etc/localtime:/etc/localtime
+    # 访问端口
+    ports:
+      - 9107:9107
+    environment:
+      # 指定时区
+      - TZ="Asia/Shanghai"
+    #启动容器后执行的命令
+    entrypoint: nohup java -server -Xms400m -Xmx400m -Dfile.encoding=utf-8 -Duser.timezone=GMT+08 -jar /dream-backmanage.jar >> /logs/dream-backmanage.log 2>&1 &
+      tail -f /logs/dream-backmanage.log
