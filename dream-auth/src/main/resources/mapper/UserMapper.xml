@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.wcs.auth.mapper.UserMapper">
+
+    <resultMap type="com.wcs.auth.model.User" id="UserMap">
+        <result property="userId" column="user_id"/>
+        <result property="mobile" column="mobile"/>
+        <result property="openid" column="openid"/>
+        <result property="password" column="password"/>
+        <result property="name" column="name"/>
+        <result property="genderId" column="gender_id"/>
+        <result property="address" column="address"/>
+        <result property="email" column="email"/>
+        <result property="program" column="program"/>
+        <result property="headPath" column="head_path"/>
+        <result property="createTime" column="create_time"/>
+        <result property="updateTime" column="update_time"/>
+        <result property="userType" column="user_type"/>
+        <result property="postName" column="post_name"/>
+    </resultMap>
+
+    <sql id="userColumn">
+        t.user_id,t.mobile,t.openid,t.password,t.name,t.post_name,t.company_name,t.user_type,
+        t.gender_id,t.address,t.email,t.program,t.head_path,t.create_time,t.update_time
+    </sql>
+    <insert id="insert">
+        insert into dr_user(user_id,mobile,openid,update_time)
+            value (#{user_id},#{mobile},#{openid},#{update_time})
+    </insert>
+
+    <select id="queryByMobile" resultType="com.wcs.auth.model.User">
+        select <include refid="userColumn"/>
+        from dr_user t
+        where mobile = #{mobile}
+    </select>
+
+
+
+</mapper>
+

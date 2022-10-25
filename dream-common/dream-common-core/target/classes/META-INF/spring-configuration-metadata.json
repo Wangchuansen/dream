@@ -1,0 +1,11 @@
+{
+  "groups": [
+    {
+      "name": "feign.inside",
+      "type": "com.wcs.common.feign.FeignInsideAuthConfig",
+      "sourceType": "com.wcs.common.feign.FeignInsideAuthConfig"
+    }
+  ],
+  "properties": [],
+  "hints": []
+}
