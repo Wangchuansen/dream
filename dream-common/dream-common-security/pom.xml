@@ -27,11 +27,11 @@
         <artifactId>dream-common-core</artifactId>
         <version>${project.version}</version>
     </dependency>
-<!--    <dependency>-->
-<!--        <groupId>com.sidex</groupId>-->
-<!--        <artifactId>njydzq-common-cache</artifactId>-->
-<!--        <version>${project.version}</version>-->
-<!--    </dependency>-->
+    <dependency>
+        <groupId>com.wcs</groupId>
+        <artifactId>dream-common-cache</artifactId>
+        <version>${project.version}</version>
+    </dependency>
 
 
     <dependency>

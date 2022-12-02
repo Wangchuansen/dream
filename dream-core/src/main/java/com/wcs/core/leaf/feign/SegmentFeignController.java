@@ -1,6 +1,6 @@
 package com.wcs.core.leaf.feign;
 
-import com.wcs.api.core.feign.SegmentFeignClient;
+import com.wcs.api.core.feign.leaf.SegmentFeignClient;
 import com.wcs.common.response.ResponseResult;
 import org.springframework.web.bind.annotation.RestController;
 

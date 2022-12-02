@@ -1,8 +1,6 @@
 package com.wcs.auth.service.impl;
 
-import cn.hutool.core.bean.BeanUtil;
-import cn.hutool.core.util.StrUtil;
-import com.wcs.api.core.feign.SegmentFeignClient;
+import com.wcs.api.core.feign.leaf.SegmentFeignClient;
 import com.wcs.auth.mapper.UserMapper;
 import com.wcs.auth.model.User;
 import com.wcs.auth.service.LoginService;
@@ -13,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.HashMap;
 import java.util.Map;
 
 /**

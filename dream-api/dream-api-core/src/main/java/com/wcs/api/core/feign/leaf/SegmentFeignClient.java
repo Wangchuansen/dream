@@ -1,4 +1,4 @@
-package com.wcs.api.core.feign;
+package com.wcs.api.core.feign.leaf;
 
 import com.wcs.common.feign.FeignInsideAuthConfig;
 import com.wcs.common.response.ResponseResult;

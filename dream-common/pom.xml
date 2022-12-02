@@ -15,6 +15,7 @@
         <module>dream-common-core</module>
         <module>dream-common-database</module>
         <module>dream-common-security</module>
+        <module>dream-common-cache</module>
     </modules>
 
 
