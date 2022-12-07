@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 /**
  * @author: wcs
  * @create: 2022-10-09 13:19
@@ -45,7 +47,7 @@ public class DemoController {
     }
 
     @GetMapping("/es")
-    public ResponseResult esSearch(@RequestBody EsSearchParamVo searchParamVo){
+    public ResponseResult esSearch(@Valid EsSearchParamVo searchParamVo){
         ResponseResult<PageVO<EsCaseVO>> page = esIndexCaseFeignClient.getPage(searchParamVo);
         return ResponseResult.success(page);
     }

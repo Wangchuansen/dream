@@ -17,31 +17,31 @@ public enum EsIndexEnum {
     /**
      * 方案
      */
-    SCHEME_INDEX(2,"scheme","schemeId", EsSchemeVO.class),
+//    SCHEME_INDEX(2,"scheme","schemeId", EsSchemeVO.class),
     /**
      * 场景
      */
-    SCENE_INDEX(3,"scene","sceneId", EsSceneVO.class),
+//    SCENE_INDEX(3,"scene","sceneId", EsSceneVO.class),
     /**
      * 白皮书
      */
-    WHITEBOOK_INDEX(4,"whitebook","whitebookId", EsWhitebookVO.class),
+//    WHITEBOOK_INDEX(4,"whitebook","whitebookId", EsWhitebookVO.class),
     /**
      * 政策
      */
-    POLICY_INDEX(5,"policy","policyId", EsPolicyVO.class),
+//    POLICY_INDEX(5,"policy","policyId", EsPolicyVO.class),
     /**
      * 商机
      */
-    OPPORTUNITY_INDEX(8,"opportunity","opportunityId", EsOpportunityVO.class),
+//    OPPORTUNITY_INDEX(8,"opportunity","opportunityId", EsOpportunityVO.class),
     /**
      * ISV
      */
-    ISV_INDEX(9,"isv","companyId", EsIsvVO.class),
+//    ISV_INDEX(9,"isv","companyId", EsIsvVO.class),
     /**
      * 移动标品
      */
-    MOBILE_SAMPLE_INDEX(10,"mobile_sample","sampleId", EsMobileSampleVO.class),
+//    MOBILE_SAMPLE_INDEX(10,"mobile_sample","sampleId", EsMobileSampleVO.class),
     ;
 
     /**

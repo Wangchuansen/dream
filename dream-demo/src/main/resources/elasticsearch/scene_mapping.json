@@ -1,0 +1,93 @@
+{
+  "settings":{
+    "index.max_ngram_diff":7,
+    "analysis": {
+      "analyzer": {
+        "default" : {
+          "tokenizer" : "ik_max_word"
+        },
+        "pinyin": {
+          "tokenizer": "pinyin"
+        },
+        "ngram": {
+          "tokenizer": "ngram"
+        }
+      },
+      "tokenizer": {
+        "pinyin": {
+          "type": "pinyin",
+          "keep_first_letter": true,
+          "keep_separate_first_letter": false,
+          "keep_full_pinyin": true,
+          "keep_original": true,
+          "limit_first_letter_length": 16,
+          "lowercase": true
+        },
+        "ngram": {
+          "type": "ngram",
+          "min_gram": 1,
+          "max_gram": 8,
+          "token_chars": [
+            "letter",
+            "digit",
+            "punctuation",
+            "symbol",
+            "whitespace"
+          ]
+        }
+      }
+    }
+  },
+  "mappings":{
+    "properties": {
+      "sceneId": {
+        "type": "long"
+      },
+      "title": {
+        "type": "keyword",
+        "fields": {
+          "ik_max_word": {
+            "type": "text",
+            "analyzer": "ik_max_word"
+          },
+          "pinyin": {
+            "type": "text",
+            "analyzer": "pinyin"
+          },
+          "ngram": {
+            "type": "text",
+            "analyzer": "ngram"
+          }
+        }
+      },
+      "image": {
+        "type": "keyword"
+      },
+      "labelIds": {
+        "type": "text"
+      },
+      "readCount": {
+        "type": "long"
+      },
+      "createTime": {
+        "type": "date"
+      },
+      "isTop": {
+        "type": "integer"
+      },
+      "showTypeId": {
+        "type": "integer"
+      },
+      "intro": {
+        "type": "text",
+        "analyzer": "ik_max_word",
+        "fields": {
+          "ngram": {
+            "type": "text",
+            "analyzer": "ngram"
+          }
+        }
+      }
+    }
+  }
+}

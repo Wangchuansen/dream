@@ -85,16 +85,16 @@ public class EsSearchManager extends EsIndexManager{
 
 
             /**========================== todo isv =============================*/
-            if (searchParamVo.getModuleIdList().contains(EsIndexEnum.ISV_INDEX.id())) {
-                super.addCompanyNameQuery(shouldQ,searchParamVo);
-            }
-
-
-            /**========================== todo opportunity =============================*/
-            if (searchParamVo.getModuleIdList().contains(EsIndexEnum.OPPORTUNITY_INDEX.id())) {
-                super.addTendereeQuery(shouldQ,searchParamVo);
-                super.addDetailQuery(shouldQ,searchParamVo);
-            }
+//            if (searchParamVo.getModuleIdList().contains(EsIndexEnum.ISV_INDEX.id())) {
+//                super.addCompanyNameQuery(shouldQ,searchParamVo);
+//            }
+//
+//
+//            /**========================== todo opportunity =============================*/
+//            if (searchParamVo.getModuleIdList().contains(EsIndexEnum.OPPORTUNITY_INDEX.id())) {
+//                super.addTendereeQuery(shouldQ,searchParamVo);
+//                super.addDetailQuery(shouldQ,searchParamVo);
+//            }
             /**=======================================================*/
 
             super.addNameLabelQuery(shouldQ,searchParamVo);

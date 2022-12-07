@@ -22,6 +22,7 @@ import org.elasticsearch.client.RequestOptions;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.client.core.CountRequest;
 import org.elasticsearch.client.core.CountResponse;
+import org.elasticsearch.common.text.Text;
 import org.elasticsearch.common.unit.Fuzziness;
 import org.elasticsearch.common.unit.TimeValue;
 import org.elasticsearch.common.xcontent.XContentType;
@@ -32,6 +33,8 @@ import org.elasticsearch.rest.RestStatus;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
+import org.elasticsearch.search.fetch.subphase.highlight.HighlightBuilder;
+import org.elasticsearch.search.fetch.subphase.highlight.HighlightField;
 import org.elasticsearch.search.sort.SortOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -58,7 +61,11 @@ public class EsIndexManager {
         // 2.构建搜索条件
         SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
         // 设置高亮
-//        searchSourceBuilder.highlighter(new HighlightBuilder());
+        HighlightBuilder highlightBuilder = new HighlightBuilder();
+        highlightBuilder.field("title.ngram");
+        highlightBuilder.preTags("<span style='color:red'>");
+        highlightBuilder.postTags("</span>");
+        searchSourceBuilder.highlighter(highlightBuilder);
         // 分页
         builderPage(searchSourceBuilder,searchParamVo);
         searchSourceBuilder.timeout(new TimeValue(60, TimeUnit.SECONDS));
@@ -198,7 +205,23 @@ public class EsIndexManager {
 
         List<T> list = new ArrayList<>(hitsValue.length);
         for (SearchHit documentFields : hitsValue) {
+
+            // 使用新的字段值（高亮），覆盖旧的字段值
             Map<String, Object> sourceAsMap = documentFields.getSourceAsMap();
+            // 高亮字段
+            Map<String, HighlightField> highlightFields = documentFields.getHighlightFields();
+            HighlightField name = highlightFields.get("title.ngram");
+
+            // 替换
+            if (name != null){
+                Text[] fragments = name.fragments();
+                StringBuilder new_name = new StringBuilder();
+                for (Text text : fragments) {
+                    new_name.append(text);
+                }
+                sourceAsMap.put("title",new_name.toString());
+            }
+//            Map<String, Object> sourceAsMap = documentFields.getSourceAsMap();
             list.add(BeanUtil.mapToBean(sourceAsMap,tClass ,false,copyOptions));
         }
         return list;

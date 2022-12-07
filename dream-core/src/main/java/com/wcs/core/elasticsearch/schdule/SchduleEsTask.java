@@ -54,17 +54,17 @@ public class SchduleEsTask {
         //修改案例
         updateReadCount(getReadCountKey(EsIndexEnum.CASE_INDEX.value()),EsIndexEnum.CASE_INDEX.value());
         //修改方案
-        updateReadCount(getReadCountKey(EsIndexEnum.SCHEME_INDEX.value()),EsIndexEnum.SCHEME_INDEX.value());
+//        updateReadCount(getReadCountKey(EsIndexEnum.SCHEME_INDEX.value()),EsIndexEnum.SCHEME_INDEX.value());
         //修改场景
-        updateReadCount(getReadCountKey(EsIndexEnum.SCENE_INDEX.value()),EsIndexEnum.SCENE_INDEX.value());
+//        updateReadCount(getReadCountKey(EsIndexEnum.SCENE_INDEX.value()),EsIndexEnum.SCENE_INDEX.value());
         //修改政策
-        updateReadCount(getReadCountKey(EsIndexEnum.POLICY_INDEX.value()),EsIndexEnum.POLICY_INDEX.value());
+//        updateReadCount(getReadCountKey(EsIndexEnum.POLICY_INDEX.value()),EsIndexEnum.POLICY_INDEX.value());
         //修改白皮书
-        updateReadCount(getReadCountKey(EsIndexEnum.WHITEBOOK_INDEX.value()),EsIndexEnum.WHITEBOOK_INDEX.value());
+//        updateReadCount(getReadCountKey(EsIndexEnum.WHITEBOOK_INDEX.value()),EsIndexEnum.WHITEBOOK_INDEX.value());
         //修改商机
-        updateReadOpportunityCount(getReadCountKey(EsIndexEnum.OPPORTUNITY_INDEX.value()),EsIndexEnum.OPPORTUNITY_INDEX.value());
+//        updateReadOpportunityCount(getReadCountKey(EsIndexEnum.OPPORTUNITY_INDEX.value()),EsIndexEnum.OPPORTUNITY_INDEX.value());
         //修改移动标品
-        updateReadCount(getReadCountKey(EsIndexEnum.MOBILE_SAMPLE_INDEX.value()),EsIndexEnum.MOBILE_SAMPLE_INDEX.value());
+//        updateReadCount(getReadCountKey(EsIndexEnum.MOBILE_SAMPLE_INDEX.value()),EsIndexEnum.MOBILE_SAMPLE_INDEX.value());
     }
 
     /**
@@ -174,11 +174,11 @@ public class SchduleEsTask {
             for (String key : keys) {
                 Long value = Long.valueOf(opsForValue.get(key));
                 String[] s = key.split("_");
-                if (searchName.equals(EsIndexEnum.MOBILE_SAMPLE_INDEX.value())){
-                    idCountMap.put(s[3], value);
-                }else {
-                    idCountMap.put(s[2], value);
-                }
+//                if (searchName.equals(EsIndexEnum.MOBILE_SAMPLE_INDEX.value())){
+//                    idCountMap.put(s[3], value);
+//                }else {
+//                    idCountMap.put(s[2], value);
+//                }
             }
             updateEs(idCountMap,searchName);
             stringRedisTemplate.delete(keys);
