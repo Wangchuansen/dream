@@ -32,12 +32,17 @@ public class OssConfig {
     private Integer ossType;
     @Value("${minio.oss.resources-url}")
     private String resourcesUrl;
-
     /**
      * 最大上传长度单位m，默认20M
      */
     @Value("${minio.oss.maxLength:20}")
     private Integer maxLength;
+    /**最大分片数量*/
+    @Value("${minio.oss.max-part-num}")
+    private Integer maxPartNum;
+    /**过期时长*/
+    @Value("${minio.oss.expiry}")
+    private Integer expiry;
 
     /**
      * 获取完整路径

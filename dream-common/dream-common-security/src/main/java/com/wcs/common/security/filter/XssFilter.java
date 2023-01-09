@@ -1,4 +1,4 @@
-package com.wcs.common.security;
+package com.wcs.common.security.filter;
 
 import com.wcs.common.xss.XssWrapper;
 import org.slf4j.Logger;

@@ -15,6 +15,7 @@
         <module>dream-core</module>
         <module>dream-api</module>
         <module>dream-demo</module>
+        <module>dream-activiti</module>
     </modules>
 
     <properties>
@@ -41,13 +42,13 @@
         <captcha.version>1.2.5</captcha.version>
         <knife4j.version>3.0.2</knife4j.version>
         <elasticsearch.version>7.9.1</elasticsearch.version>
-        <minio.version>8.0.3</minio.version>
+        <minio.version>8.4.3</minio.version>
 <!--        <rocketmq-springboot.version>2.2.0</rocketmq-springboot.version>-->
         <weixin.version>4.0.0</weixin.version>
         <spring-javaformat.version>0.0.22</spring-javaformat.version>
         <lombok.version>1.18.24</lombok.version>
         <!--        <activiti.version>6.0.0</activiti.version>-->
-<!--        <activiti.version>7.1.0.M6</activiti.version>-->
+        <activiti.version>7.1.0.M6</activiti.version>
 <!--        <spring-boot-starter-test.version>2.4.2</spring-boot-starter-test.version>-->
         <commons-text.version>1.9</commons-text.version>
     </properties>
@@ -206,33 +207,33 @@
 
 
             <!-- https://mvnrepository.com/artifact/org.activiti/activiti-spring-boot-starter -->
-            <!--            <dependency>-->
-            <!--                <groupId>org.activiti</groupId>-->
-            <!--                <artifactId>activiti-spring-boot-starter</artifactId>-->
-            <!--                <version>${activiti.version}</version>-->
-            <!--            </dependency>-->
+<!--                        <dependency>-->
+<!--                            <groupId>org.activiti</groupId>-->
+<!--                            <artifactId>activiti-spring-boot-starter</artifactId>-->
+<!--                            <version>${activiti.version}</version>-->
+<!--                        </dependency>-->
 
-<!--            <dependency>-->
-<!--                <groupId>org.activiti</groupId>-->
-<!--                <artifactId>activiti-spring-boot-starter-basic</artifactId>-->
-<!--                <version>6.0.0</version>-->
-<!--                <exclusions>-->
-<!--                    <exclusion>-->
-<!--                        <groupId>org.mybatis</groupId>-->
-<!--                        <artifactId>mybatis</artifactId>-->
-<!--                    </exclusion>-->
-<!--                    <exclusion>-->
-<!--                        <groupId>org.springframework.boot</groupId>-->
-<!--                        <artifactId>spring-boot-starter-security</artifactId>-->
-<!--                    </exclusion>-->
-<!--                </exclusions>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>org.activiti</groupId>
+                <artifactId>activiti-spring-boot-starter-basic</artifactId>
+                <version>6.0.0</version>
+                <exclusions>
+                    <exclusion>
+                        <groupId>org.mybatis</groupId>
+                        <artifactId>mybatis</artifactId>
+                    </exclusion>
+                    <exclusion>
+                        <groupId>org.springframework.boot</groupId>
+                        <artifactId>spring-boot-starter-security</artifactId>
+                    </exclusion>
+                </exclusions>
+            </dependency>
 
-<!--            <dependency>-->
-<!--                <groupId>com.aliyun</groupId>-->
-<!--                <artifactId>dysmsapi20170525</artifactId>-->
-<!--                <version>2.0.16</version>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>com.aliyun</groupId>
+                <artifactId>dysmsapi20170525</artifactId>
+                <version>2.0.16</version>
+            </dependency>
 
             <dependency>
                 <groupId>org.springframework.boot</groupId>

@@ -15,6 +15,7 @@
         <module>dream-api-core</module>
         <module>dream-api-auth</module>
         <module>dream-api-demo</module>
+        <module>dream-api-activiti</module>
     </modules>
 
     <properties>

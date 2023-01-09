@@ -1,5 +1,8 @@
 package com.wcs.auth.service;
 
+import com.wcs.api.auth.bo.UserInfoInTokenBO;
+import com.wcs.api.auth.vo.LoginInfoVo;
+import com.wcs.auth.dto.LoginParamDto;
 import com.wcs.auth.model.User;
 import com.wcs.common.response.ResponseResult;
 
@@ -11,7 +14,20 @@ import java.util.Map;
  * @description:
  */
 public interface LoginService {
-    ResponseResult<Map<String,Object>> login(String mobile,String code);
+    /**
+     * 小程序登录
+     * @param phoneCode 微信获取手机号code
+     */
+//    ResponseResult<LoginInfoVo> loginMiniProgram(String phoneCode, String invitationUserId);
 
-    ResponseResult<User> userInfo();
+    /**
+     * 手机号登录
+     */
+    ResponseResult<LoginInfoVo> loginMiniMobile(LoginParamDto loginParamDto);
+
+    /**
+     * 根据id获取用户信息
+     * @param userId
+     */
+    UserInfoInTokenBO getUserByUseId(Long userId, Integer sysType);
 }

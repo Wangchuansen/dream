@@ -12,16 +12,16 @@
     <artifactId>dream-common-security</artifactId>
 
     <dependencies>
-<!--    <dependency>-->
-<!--        <groupId>com.sidex</groupId>-->
-<!--        <artifactId>njydzq-api-core</artifactId>-->
-<!--        <version>${project.version}</version>-->
-<!--    </dependency>-->
-<!--    <dependency>-->
-<!--        <groupId>com.sidex</groupId>-->
-<!--        <artifactId>njydzq-api-auth</artifactId>-->
-<!--        <version>${project.version}</version>-->
-<!--    </dependency>-->
+    <dependency>
+        <groupId>com.wcs</groupId>
+        <artifactId>dream-api-core</artifactId>
+        <version>${project.version}</version>
+    </dependency>
+    <dependency>
+        <groupId>com.wcs</groupId>
+        <artifactId>dream-api-auth</artifactId>
+        <version>${project.version}</version>
+    </dependency>
     <dependency>
         <groupId>com.wcs</groupId>
         <artifactId>dream-common-core</artifactId>
